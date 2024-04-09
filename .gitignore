@@ -1,0 +1,43 @@
+# Dependency directories
+node_modules/
+
+# Environment files
+.env
+
+# OS-generated files
+.DS_Store
+Thumbs.db
+
+# Logs
+logs/
+*.log
+
+# Build files
+build/
+dist/
+out/
+
+# Coverage directory
+coverage/
+
+# Editor-specific files
+.vscode/
+*.sublime-project
+*.sublime-workspace
+
+# npm-debug.log file
+npm-debug.log
+
+# Yarn Integrity file
+.yarn-integrity
+
+# Dependency lock files
+package-lock.json
+yarn.lock
+
+# For any custom configuration files (e.g., webpack, babel, etc.)
+# Add appropriate entries here
+
+# Optionally exclude local configuration files
+# config/local.json
+

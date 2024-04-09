@@ -1,0 +1,25 @@
+{
+  "name": "chat-app",
+  "version": "0.0.1",
+  "description": "A real-time chat app",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yvan-hirwa/Real-TimeChatApp.git"
+  },
+  "author": "Yvan-Hirwa",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/yvan-hirwa/Real-TimeChatApp/issues"
+  },
+  "homepage": "https://github.com/yvan-hirwa/Real-TimeChatApp#readme",
+  "dependencies": {
+    "express": "^4.19.2"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.0"
+  }
+}
