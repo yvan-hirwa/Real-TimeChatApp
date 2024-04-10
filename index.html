@@ -12,6 +12,9 @@
     <form action="" id="form">
         <input type="text" id="input" placeholder="Type your message..." autocomplete="off" />
         <button type="submit">Send</button>
+        <button id="toggle-btn" type="button">
+            Disconnect
+        </button>
     </form>
    
     
@@ -41,7 +44,7 @@
 }
 
 #input{
-    border: 1px solid #1e4920;
+    border: 2px solid #1e4920;
     padding: 0.75rem 1rem;
     flex-grow: 1;
     border-radius: 2.5rem;
@@ -59,7 +62,9 @@
     outline: none;
     color: #fff;
     cursor: pointer;
+    margin-right: 10px;
 }
+
 #messages{
     list-style-type: none;
     margin: 0;
@@ -79,5 +84,40 @@
 
 
     </style>
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+        const socket = io(); 
+
+        const form = document.getElementById('form');
+        const input = document.getElementById('input')
+        const messages = document.getElementById('messages');
+        const toggleBtn = document.getElementById('toggle-btn');
+
+        form.addEventListener('submit', (e)=>{
+            e.preventDefault();
+            if(input.value){
+                socket.emit('Chat Message', input.value)
+                input.value = "";
+            }
+        });
+
+        toggleBtn.addEventListener('click', ()=>{
+            if (socket.connected) {
+                socket.disconnect();
+                toggleBtn.textContent = "Connect";
+            }
+            else{
+                socket.connect();
+                toggleBtn.textContent = "Disconnect";
+            }
+        });
+
+        socket.on('Chat Message', (msg)=>{
+            const item = document.createElement('li');
+            item.textContent = msg;
+            messages.insertAdjacentElement('beforeend', item);
+            window.scrollTo(0, document.body.scrollHeight);
+        })
+    </script>
 </body>
 </html>
