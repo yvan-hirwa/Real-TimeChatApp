@@ -86,7 +86,11 @@
     </style>
     <script src="/socket.io/socket.io.js"></script>
     <script>
-        const socket = io(); 
+        const socket = io({
+            auth: {
+                serverOffset: 0
+            }
+        }); 
 
         const form = document.getElementById('form');
         const input = document.getElementById('input')
@@ -112,11 +116,12 @@
             }
         });
 
-        socket.on('Chat Message', (msg)=>{
+        socket.on('Chat Message', (msg, serverOffset)=>{
             const item = document.createElement('li');
             item.textContent = msg;
             messages.insertAdjacentElement('beforeend', item);
             window.scrollTo(0, document.body.scrollHeight);
+            socket.auth.serverOffset = serverOffset;
         })
     </script>
 </body>
